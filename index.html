@@ -74,10 +74,13 @@
 
 <!-- FORMULÁRIO NO BANNER -->
 
-<form class="banner-form" action="#" method="post">
+<form class="banner-form" action="https://formspree.io/f/xxxxxxxx" method="post">
 
     <label for="nome" class="sr-only">Nome</label>
     <input id="nome" type="text" name="nome" placeholder="Seu nome" required> <!-- "input" para inserir dados-->
+
+    <label for="email" class="sr-only">Email</label>
+    <input id="email" type="email" name="email" placeholder="Seu email" required />
 
     <label for="servico" class="sr-only">Serviço de interesse</label>
     <select id="servico" name="servico" required> <!-- "select" para criar Combobox-->
@@ -89,6 +92,9 @@
         <option>Carta de Apresentação</option>
         <option>Outro</option>
     </select>
+
+    <label for="mensagem" class="sr-only">Mensagem</label>
+    <input id="mensagem" type="text" name="mensagem" placeholder="Escreva uma mensagem" />
 
     <button type="submit">Solicitar Serviço</button>
     
