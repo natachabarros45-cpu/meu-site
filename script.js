@@ -1,7 +1,5 @@
 const audio = document.getElementById("bgMusic");
 const btn = document.getElementById("soundBtn");
-const form = document.querySelector(".banner-form");
-const msgOk = document.getElementById("msgOk");
 
 let playing = false;
 
@@ -20,10 +18,4 @@ btn.addEventListener("click", async () => {
   } catch (e) {
     alert("O navegador bloqueou o som. Clique novamente.");
   }
-});
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  msgOk.style.display = "block";
-  form.reset();
 });
