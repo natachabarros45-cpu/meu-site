@@ -1,0 +1,325 @@
+/* Custom Properties - Define as cores da Pagina(Layout) na sua totalidade*/
+:root{
+    --bg: #0b1220;      /* Cor de fundo principal  - Azul mais escuro*/
+    --panel: #111a2e;   /* Cor de fundo dos menus, sidebar/barra lateral e cartões - Azul mais claro*/
+    --text: #e7edf7;    /* Cor principal dos textos - Branca */
+    --muted: #b8c3d9;   /* Cor do texto secundário - Cinza claro */
+    --accent: #4da3ff;  /* Cor dos destaques (botões, links importantes) - Azul Ciano*/
+    --border: rgba(255,255,255,0.08);  /*  Cor das bordas e divisorias - Cinza mais escuro*/
+}
+
+*{ box-sizing: border-box; } /* Define o modelo das caixas (boxes) */
+
+/* Define o estilo global da página, ou seja, como o site inteiro vai se comportar visualmente por padrão
+margin: 0; remove a margem padrao do navegador | var (--bg) aplica a cor de fundo definida no root*/
+body{       
+    margin: 0;                                                                      
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);     
+    color: var(--text);
+    line-height: 1.5;
+}
+
+/* ===== Layout geral ===== */
+.layout{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+}
+
+/* ===== Sidebar (menu lateral) ===== */
+.sidebar{
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 22px 18px;
+    background: linear-gradient(180deg, var(--panel), rgba(17,26,46,0.65));
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.brand{  /*Definicoes da Marca*/
+    display: grid;
+    gap: 8px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand .name{   /* Meu nome na Barra Lateral Esquerda */
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.brand .role{   /*Meu Role na Barra Lateral Esquerda */
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.menu{   /*a organização do menu de navegação da sua barra lateral (sidebar) | Quem Sou | O que Faco, etc | Servicos*/
+    display: grid;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.menu a{ /* aparência de cada link do menu lateral — ou seja, ele transforma os links simples (<a>) em botões visuais dentro da sidebar.*/
+    text-decoration: none;
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: rgba(255,255,255,0.03);
+}
+
+.menu a:hover{  /* define o efeito visual quando o utilizador passa o rato (mouse) por cima dos itens do menu.*/
+    border-color: var(--border);
+    background: rgba(255,255,255,0.06);
+}
+
+.cta{        /* Esta classe controla a área final da sidebar, onde ficam os botões de ação (Call To Action), como: Fale Comigo | Baixar Preçário*/
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    gap: 10px;
+}
+
+.btn{               /*Fale Comigo*/
+    display: inline-block;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #061023;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.btn.secondary{     /* Precario*/
+    background: rgba(255,255,255,0.08);
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* ===== Conteúdo central ===== */
+main{
+    padding: 26px 24px 60px;
+    max-width: 980px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ===== Banner de vídeo no topo ===== */
+.video-banner{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1920 / 838;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    margin-bottom: 18px;
+}
+
+.video-bg{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.video-banner::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
+
+.banner-content{   /*Este código controla toda a área de conteúdo que aparece por cima do vídeo do banner 
+    “Natacha de Barros” | texto descritivo abaixo do nome | O botão “Ver serviços” | O formulário */
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    padding-bottom: 30px;
+    color: #fff;
+    gap: 10px;
+}
+
+.banner-content h1{  /* Estiliza o titulo principal do Banner - Natacha de Barros */
+    margin: 0;
+    font-size: 32px;
+    letter-spacing: 0.2px;
+}
+
+.banner-content p{  /* Estiliza os parágrafos (<p>) que estão dentro da área do banner */
+    margin: 0;
+    max-width: 70ch;
+    color: #e0e0e0;
+}
+
+.banner-actions{  /*Este código organiza os botões (ou ações) que aparecem dentro do banner - " Ver Servicos" */
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.banner-btn{   /* Define a aparencia do botao "Ver Servicos" no banner */
+    display: inline-block;
+    background: var(--accent);
+    color: #061023;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 800;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.banner-btn.secondary{  /*Este código define uma versão secundária/alternativa do botão "Ver Servicos" no banner*/
+    background: rgba(255,255,255,0.10);
+    color: #fff;
+    font-weight: 700;
+    border: 1px solid var(--border);
+}
+
+/* ===== Secções ===== */
+section.box{  /* Estilo padrão de todas as seções de conteúdo em formato de “cartão” */
+    margin-top: 14px;
+    padding: 20px 22px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.03);
+}
+
+section.box h2{  /* Estilizacao das titulos h2 das seccoes */
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+/* Define um layout em duas colunas para organizar conteúdos lado a lado dentro das secções */
+.grid{         
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.card{   /*Essa classe define o visual de cada cartão individual dentro das secções do site.*/
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(0,0,0,0.15);
+}
+
+.card h3{
+    margin: 0 0 6px 0;
+    font-size: 15px;
+}
+
+.card p{
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.muted{ color: var(--muted); }
+
+.list{
+    margin: 0;
+    padding-left: 18px;
+    color: var(--muted);
+}
+
+/* ===== Botão música (fixo) ===== */
+#soundBtn{
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 9999;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(0,0,0,0.35);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+}
+
+#soundBtn:hover{
+    background: rgba(0,0,0,0.5);
+}
+
+/* ===== (telemóvel) Responsivo ===== */
+
+@media (max-width: 900px){
+.layout{ grid-template-columns: 1fr; }
+.sidebar{
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+}
+.grid{ grid-template-columns: 1fr; }
+.banner-content h1{ font-size: 26px; }
+}
+
+.perfil{         /* Ajustar Perfil no Menu "aside"- Refere-se ao frame da foto de perfil */
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.perfil img{     /* Definicoes da imagem ou foto de perfil */
+  width: 150px;
+  height: 150px;
+  object-fit:contain;
+  border-radius: 50%;  /* deixa redonda */
+  border: 3px solid rgba(255, 255, 255, 0.118);
+  background: #0c1424;
+}
+
+/* ===== Formulário dentro do Banner ===== */
+
+.banner-form{    /* Formulario e conteudos do banner */
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 520px;
+}
+
+.banner-form input,  /* define o input de dados na combobox - "Servicos de Interesse" */
+.banner-form select{ /* define a selecao de dados na combobox - "Servicos de Interesse" */
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  flex: 1;
+  min-width: 140px;
+}
+
+.banner-form button{   /* definicoes e formatacao do Botao "Solicitar Contacto*/
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #4da3ff;
+  color: #061023;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.banner-form button:hover{  /* A cor que mostra ao passar o cursor por cima do Botao "Solicitar Contacto */
+  background: #6bb5ff;
+}
+
+.sr-only{          /* Usado p/ esconder os labels do form no banner. Eles ficam invisíveis mas sao lidos por leitores de ecrã) */
+  position: absolute;
+  left: -9999px;
+}
