@@ -1,2 +1,10 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Normalizar ficheiros de texto
+* text=auto eol=lf
+
+# Imagens e ficheiros binários
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.mp4 binary
+*.mp3 binary
