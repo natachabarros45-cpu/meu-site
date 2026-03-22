@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agendamento de Serviço</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+<style>
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: url('fundoagendamento.png') no-repeat center center/cover;  /* Imagem de fundo */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+}
+
+/* Overlay escuro para melhorar a leitura */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+}
+
+.form-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255,255,255,0.96);
+    border-radius: 16px;
+    padding: 30px 24px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+}
+    
+.form-container h1 {    
+    margin: 0 0 10px 0;
+    text-align: center;
+    font-size: 28px;
+    color: #111  
+}
+
+.intro {
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 24 px
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 4px;
+    display: block;
+}
+
+input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #4da3ff;
+      box-shadow: 0 0 0 3px rgba(77, 163, 255, 0.15);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .services-group {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 14px 14px 6px;
+      background: #fafafa;
+    }
+
+    .services-group p {
+      margin: 0 0 12px 0;
+      font-weight: bold;
+      color: #222;
+      font-size: 14px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #333;
+      font-weight: normal;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+      transform: scale(1.1);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #111;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      background: #333;
+    }
+
+    .voltar {
+      display: block;
+      margin-top: 18px;
+      text-align: center;
+      text-decoration: none;
+      color: #444;
+      font-size: 14px;
+    }
+
+    .voltar:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 22px 18px;
+      }
+
+      .form-container h1 {
+        font-size: 24px;
+      }
+    }
+</style>
+</head>
+
+<body>
+<div class="form-container"><h1>Agendar Serviço</h1>
+    <p class="intro">Escolha um ou mais serviços e indique a data desejada. Entrarei em contacto para confirmar o agendamento.</p>
+
+    <form action="https://formspree.io/f/mbdzbpbe" method="POST">
+    <div>
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" name="nome" placeholder="Seu nome completo" required />
+    </div>
+
+    <div>
+        <label for="telefone">Telefone / WhatsApp</label>
+        <input id="telefone" type="tel" name="telefone" placeholder="Seu telefone ou WhatsApp" required />
+    </div>
+
+    <div>
+        <label for="data_desejada">Data desejada</label>
+        <input id="data_desejada" type="date" name="data_desejada" required />
+    </div>
+
+    <div class="services-group"><p>Serviços pretendidos</p>
+        <label class="checkbox-item">
+            <input type="checkbox" name="servicos" value="Currículo Premium" />Currículo Premium
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox" name="servicos" value="LinkedIn Premium" />LinkedIn Premium
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox" name="servicos" value="Currículo Standard" />Currículo Standard
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox" name="servicos" value="LinkedIn Standard" />LinkedIn Standard
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox" name="servicos" value="Carta de Apresentação" />Carta de Apresentação
+        </label>
+
+        <label class="checkbox-item">
+          <input type="checkbox" name="servicos" value="Mentoria" />Mentoria
+        </label>
+
+        <label class="checkbox-item">
+          <input type="checkbox" name="servicos" value="Outro" />Outro
+        </label>
+    </div>
+
+    <div>
+        <label for="mensagem">Observação</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Escreva aqui alguma observação opcional"></textarea>
+    </div>
+
+      
+    <button class="btn-submit" type="submit">Confirmar agendamento</button>
+    </form>
+
+    <a class="voltar" href="index.html">← Voltar ao site</a>
+</div>
+
+</body>
+</html>
